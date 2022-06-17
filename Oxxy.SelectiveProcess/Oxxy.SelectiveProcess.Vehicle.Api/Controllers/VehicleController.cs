@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Oxxy.SelectiveProcess.Vehicle.Api.Data.ValueObject;
+using Oxxy.SelectiveProcess.Vehicle.Api.Repository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,36 +10,62 @@ namespace Oxxy.SelectiveProcess.Vehicle.Api.Controllers
     [ApiController]
     public class VehicleController : ControllerBase
     {
+        IVehicleRepository _repository;
+
+        public VehicleController(IVehicleRepository repository)
+        {
+            _repository = repository ?? throw new ArgumentException(nameof(repository));
+        }
+
         // GET: api/v1/<VehicleController>
         [HttpGet]
-        public IEnumerable<string> GetAllVehicles()
+        public async Task<ActionResult<IEnumerable<VehicleVO>>> GetAllVehiclesAsync()
         {
-            return new string[] { "value1", "value2" };
+            var vehicles = await _repository.FindAll();
+            return Ok(vehicles);
         }
 
         // GET api/v1/<VehicleController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<VehicleVO>> GetAsync(int id)
         {
-            return "value";
+            var vehicle = await _repository.FindById(id);
+
+            if (vehicle == null) return NotFound();
+            return Ok(vehicle);
         }
 
         // POST api/v1/<VehicleController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<VehicleVO>> Post([FromBody] VehicleVO vo)
         {
+            if (vo == null) return BadRequest();
+
+            var vehicle = await _repository.Create(vo);
+
+            return Ok(vehicle);
         }
 
         // PUT api/v1/<VehicleController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<VehicleVO>> Put([FromBody] VehicleVO vo)
         {
+            if (vo == null) return BadRequest();
+
+            var vehicle = await _repository.Update(vo);
+
+            return Ok(vehicle);
         }
 
         // DELETE api/v1/<VehicleController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            var status = await _repository.Delete(id);
+
+            if (!status) return BadRequest();
+
+            return Ok(status);
         }
     }
 }
