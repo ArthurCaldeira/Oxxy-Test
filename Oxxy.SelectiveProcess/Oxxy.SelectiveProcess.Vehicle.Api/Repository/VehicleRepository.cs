@@ -1,32 +1,59 @@
-﻿using Oxxy.SelectiveProcess.Vehicle.Api.Data.ValueObject;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Oxxy.SelectiveProcess.Vehicle.Api.Data.ValueObject;
+using Oxxy.SelectiveProcess.Vehicle.Api.Model.Context;
 
 namespace Oxxy.SelectiveProcess.Vehicle.Api.Repository
 {
     public class VehicleRepository : IVehicleRepository
     {
-        public Task<VehicleVO> Create(VehicleVO vo)
+        SqlServerContext _context;
+        IMapper _mapper;
+
+        public VehicleRepository(SqlServerContext context, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _mapper = mapper;
         }
 
-        public Task<bool> Delete(long id)
+        public async Task<IEnumerable<VehicleVO>> FindAll()
         {
-            throw new NotImplementedException();
+            List<Model.Vehicle> vehicles = await _context.Vehicles.ToListAsync();
+            return _mapper.Map<List<VehicleVO>>(vehicles);
         }
 
-        public Task<IEnumerable<VehicleVO>> FindAll()
+        public async Task<VehicleVO> FindById(long id)
         {
-            throw new NotImplementedException();
+            Model.Vehicle vehicle = await _context.Vehicles.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<VehicleVO>(vehicle);
         }
 
-        public Task<VehicleVO> FindById(long id)
+        public async Task<VehicleVO> Create(VehicleVO vo)
         {
-            throw new NotImplementedException();
+            Model.Vehicle vehicle = _mapper.Map<Model.Vehicle>(vo);
+            _context.Vehicles.Add(vehicle);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<VehicleVO>(vehicle);
         }
 
-        public Task<VehicleVO> Update(VehicleVO vo)
+        public async Task<VehicleVO> Update(VehicleVO vo)
         {
-            throw new NotImplementedException();
+            Model.Vehicle vehicle = _mapper.Map<Model.Vehicle>(vo);
+            _context.Vehicles.Update(vehicle);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<VehicleVO>(vehicle);
+        }
+
+        public async Task<bool> Delete(long id)
+        {
+            Model.Vehicle vehicle = await _context.Vehicles.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (vehicle == null) return false;
+
+            _context.Vehicles.Remove(vehicle);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

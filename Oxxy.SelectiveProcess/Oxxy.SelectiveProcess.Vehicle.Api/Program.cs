@@ -1,6 +1,19 @@
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Oxxy.SelectiveProcess.Vehicle.Api.Config;
+using Oxxy.SelectiveProcess.Vehicle.Api.Model.Context;
 using Oxxy.SelectiveProcess.Vehicle.Api.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Set connectionstring
+var connetion = builder.Configuration["SQLServerConnection:SQLServerConnectionString"];
+builder.Services.AddDbContext<SqlServerContext>(options => options.UseSqlServer(connetion));
+
+// Add automapper configuration
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Add services to the container.
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
