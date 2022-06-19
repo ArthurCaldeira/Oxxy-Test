@@ -46,8 +46,8 @@ namespace Oxxy.SelectiveProcess.Vehicle.Api.Controllers
             return Ok(vehicle);
         }
 
-        // PUT api/v1/<VehicleController>/5
-        [HttpPut("{id}")]
+        // PUT api/v1/<VehicleController>
+        [HttpPut]
         public async Task<ActionResult<VehicleVO>> Put([FromBody] VehicleVO vo)
         {
             if (vo == null) return BadRequest();
