@@ -34,7 +34,15 @@
             {
                 <tr>
                     <td>
-                        Bloqueio
+                        @if (vehicle.IsLocked)
+                        {
+                            <i class="text-danger fas fa-lock"></i>
+                        }
+                        else
+                        {
+                            <i class="text-primary fas fa-unlock"></i>
+                        }
+                        
                     </td>
                     <td>
                         @vehicle.LicensePlate

@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Injeção da referencia dos serviços
 builder.Services.AddHttpClient<IVehicleService, VehicleService>(c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:VehicleAPI"]));
+builder.Services.AddHttpClient<IVehicleImageService, VehicleImageService>(c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:VehicleImageAPI"]));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

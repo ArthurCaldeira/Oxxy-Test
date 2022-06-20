@@ -14,37 +14,54 @@
 			<input asp-for="Id" hidden />
 			@*License Plate*@
 			<div class="col-2">
-				<label asp-for="LicensePlate" class="control-label pt-2" style="font-size=20px;"></label>
+				<label asp-for="LicensePlate" class="control-label pt-2" style="font-size=20px;">Placa</label>
 			</div>
 			<div class="col-10 pb-3">
 				<input disabled asp-for="LicensePlate" class="form-control" maxlength="8" />
 			</div>
 			@*License*@
 			<div class="col-2">
-				<label asp-for="License" class="control-label pt-2" style="font-size=20px;"></label>
+				<label asp-for="License" class="control-label pt-2" style="font-size=20px;">Renavam</label>
 			</div>
 			<div class="col-10 pb-3">
 				<input disabled asp-for="License" class="form-control" maxlength="11" />
 			</div>
 			@*Owner Name*@
 			<div class="col-2">
-				<label asp-for="OwnerName" class="control-label pt-2" style="font-size=20px;"></label>
+				<label asp-for="OwnerName" class="control-label pt-2" style="font-size=20px;">Nome do proprietário</label>
 			</div>
 			<div class="col-10 pb-3">
 				<input disabled asp-for="OwnerName" class="form-control" maxlength="150" />
 			</div>
 			@*Owner CPF*@
 			<div class="col-2">
-				<label asp-for="OwnerCPF" class="control-label pt-2" style="font-size=20px;"></label>
+				<label asp-for="OwnerCPF" class="control-label pt-2" style="font-size=20px;">CPF do proprietário</label>
 			</div>
 			<div class="col-10 pb-3">
 				<input disabled asp-for="OwnerCPF" class="form-control" maxlength="14" />
+			</div>
+			@*Bloqueado*@
+			<div class="col-2">
+				<label asp-for="IsLocked" class="control-label pt-2" style="font-size=20px;">Bloqueado</label>
+			</div>
+			<div class="col-10 pb-3">
+				@Html.CheckBoxFor(m => m.IsLocked, new {disabled = true})
 			</div>
 			<div class="col-8 offset-2">
 				<a asp-action="Index" class="btn btn-primary form-control">Voltar</a> 
 			</div>
 			<div class="col-2">
 				<input type="submit" value="Editar" class="btn btn-success form-control" />
+			</div>
+			@*Fotos*@
+			<div class="col-2">
+				<label asp-for="OwnerCPF" class="control-label pt-2" style="font-size=20px;">Imagens</label>
+			</div>
+			<div class="col-10 pb-3">
+				@foreach (var vehicleImage in Model.VehicleImages)
+				{
+					<img src="data:image/jpg;base64,@Convert.ToBase64String(vehicleImage.ImageData)" class="col-5 p-2" />
+				}
 			</div>
 		</div>
 	</div>

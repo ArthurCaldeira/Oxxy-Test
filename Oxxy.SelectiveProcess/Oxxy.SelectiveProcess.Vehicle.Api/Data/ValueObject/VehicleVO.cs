@@ -7,5 +7,6 @@
         public string License { get; set; }
         public string OwnerName { get; set; }
         public string OwnerCPF { get; set; }
+        public bool IsLocked { get; set; }
     }
 }

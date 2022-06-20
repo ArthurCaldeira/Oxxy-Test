@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oxxy.SelectiveProcess.Vehicle.Api.Model.Context;
 
@@ -10,9 +11,10 @@ using Oxxy.SelectiveProcess.Vehicle.Api.Model.Context;
 namespace Oxxy.SelectiveProcess.Vehicle.Api.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20220620192624_AddVehicleDataTableOnDB2")]
+    partial class AddVehicleDataTableOnDB2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
