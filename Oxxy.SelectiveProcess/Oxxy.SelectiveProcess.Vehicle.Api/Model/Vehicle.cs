@@ -26,5 +26,8 @@ namespace Oxxy.SelectiveProcess.Vehicle.Api.Model
         [StringLength(14)]
         public string OwnerCPF { get; set; }
 
+        [Column("is_locked")]
+        public bool IsLocked { get; set; } = false;
+
     }
 }

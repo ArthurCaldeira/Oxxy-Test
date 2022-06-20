@@ -1,4 +1,12 @@
+using Oxxy.SelectiveProcess.Web.Services;
+using Oxxy.SelectiveProcess.Web.Services.IServices;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+//Injeção da referencia dos serviços
+builder.Services.AddHttpClient<IVehicleService, VehicleService>(c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:VehicleAPI"]));
+builder.Services.AddHttpClient<IVehicleImageService, VehicleImageService>(c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:VehicleImageAPI"]));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,6 +26,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Vehicle}/{action=Index}/{id?}");
 
 app.Run();
