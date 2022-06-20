@@ -9,7 +9,5 @@ namespace Oxxy.SelectiveProcess.Vehicle.Api.Model.Context
         public SqlServerContext(DbContextOptions<SqlServerContext> option): base(option) { }
 
         public DbSet<Vehicle> Vehicles { get; set; }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder) { }
     }
 }

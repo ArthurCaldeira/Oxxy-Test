@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BCBF4A0C-882D-4866-B0FB-51D7122ED8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxxy.SelectiveProcess.Vehicle.Api", "Oxxy.SelectiveProcess.Vehicle.Api\Oxxy.SelectiveProcess.Vehicle.Api.csproj", "{4EB7BBC8-7C3D-40FC-ADEA-BB5FD9A722C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oxxy.SelectiveProcess.Vehicle.Api", "Oxxy.SelectiveProcess.Vehicle.Api\Oxxy.SelectiveProcess.Vehicle.Api.csproj", "{4EB7BBC8-7C3D-40FC-ADEA-BB5FD9A722C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{347AF96C-1AB6-4165-BE53-120543139311}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxxy.SelectiveProcess.Web", "Oxxy.SelectiveProcess.Web\Oxxy.SelectiveProcess.Web.csproj", "{3C896536-2F6B-4C2A-AAFA-622755E6EE64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oxxy.SelectiveProcess.Web", "Oxxy.SelectiveProcess.Web\Oxxy.SelectiveProcess.Web.csproj", "{3C896536-2F6B-4C2A-AAFA-622755E6EE64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxxy.SelectiveProcess.VehicleImage.Api", "Oxxy.SelectiveProcess.VehicleImage.Api\Oxxy.SelectiveProcess.VehicleImage.Api.csproj", "{B713328F-4098-44B5-AAC8-041168B5D6F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{3C896536-2F6B-4C2A-AAFA-622755E6EE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C896536-2F6B-4C2A-AAFA-622755E6EE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C896536-2F6B-4C2A-AAFA-622755E6EE64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B713328F-4098-44B5-AAC8-041168B5D6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B713328F-4098-44B5-AAC8-041168B5D6F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B713328F-4098-44B5-AAC8-041168B5D6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B713328F-4098-44B5-AAC8-041168B5D6F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4EB7BBC8-7C3D-40FC-ADEA-BB5FD9A722C4} = {BCBF4A0C-882D-4866-B0FB-51D7122ED8F1}
 		{3C896536-2F6B-4C2A-AAFA-622755E6EE64} = {347AF96C-1AB6-4165-BE53-120543139311}
+		{B713328F-4098-44B5-AAC8-041168B5D6F3} = {BCBF4A0C-882D-4866-B0FB-51D7122ED8F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16018E7D-707A-4818-9759-B85DD8C715AA}
